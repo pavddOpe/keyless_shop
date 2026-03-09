@@ -2962,7 +2962,12 @@ input, select, textarea {
 				  #banner p, .banner-sub {
 				    font-size: 1.1rem;
 				  }
-				
+				h2, h3 {
+				    font-size: 1.6rem;
+				  }
+				  p {
+				    line-height: 1.7;
+				  }
 				  .section-title {
 				    font-size: 2rem;
 				  }
@@ -2986,4 +2991,63 @@ input, select, textarea {
 				    font-size: 1.1rem;
 				    padding: 1rem 1.5rem;
 				  }
+				}
+				@media screen and (max-width: 768px) {
+
+				  header.topbar nav {
+				    display: none;
+				  }
+				  header.topbar .container.nav-flex {
+				    flex-direction: row;
+				    justify-content: space-between;
+				    align-items: center;
+				    padding: 0.8rem 1rem;
+				  }
+				  /* Hamburger button */
+				  .hamburger {
+				    display: block;
+				    font-size: 1.8rem;
+				    cursor: pointer;
+				    color: white;
+				    background: none;
+				    border: none;
+				    padding: 0.5rem;
+				  }
+				  .mobile-menu {
+				    display: none;
+				    position: absolute;
+				    top: 100%;
+				    left: 0;
+				    width: 100%;
+				    background: var(--bg-main);
+				    padding: 1rem;
+				    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+				    z-index: 999;
+				  }
+				
+				  .mobile-menu.show {
+				    display: block;
+				  }
+				
+				  .mobile-menu a {
+				    display: block;
+				    padding: 1rem 0;
+				    font-size: 1.1rem;
+				    color: white;
+				    text-decoration: none;
+				    border-bottom: 1px solid rgba(255,255,255,0.1);
+				  }
+				
+				  .mobile-menu a:last-child {
+				    border-bottom: none;
+				  }
+					
+				  header.topbar .button {
+				    padding: 0.8rem 1.5rem;
+				    font-size: 1.1rem;
+				  }
+				}
+				
+				.hamburger {
+				  display: none;
 				}
