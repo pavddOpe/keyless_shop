@@ -2116,3 +2116,14 @@ a:hover {
         transform: scale(0.98);
     }
 }
+@media screen and (max-width: 767px) {
+    .price-card li {
+        border: 2px solid red !important;
+    }
+    .price-card li span:first-child {
+        border: 2px solid blue !important;
+    }
+    .price-card .price {
+        border: 2px solid green !important;
+    }
+}
