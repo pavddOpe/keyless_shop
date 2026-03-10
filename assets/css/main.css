@@ -725,8 +725,16 @@ a:hover {
     position: relative;
     overflow: hidden;
     border-radius: 30px;
-    aspect-ratio: 4/3;
+    aspect-ratio: 3/4;
     cursor: pointer;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    transition: var(--transition);
+    border: 2px solid transparent;
+}
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 40px rgba(22, 163, 74, 0.3);
+    border-color: var(--accent-primary);
 }
 .project-card img {
     width: 100%;
@@ -737,21 +745,60 @@ a:hover {
 .project-card:hover img {
     transform: scale(1.1);
 }
-.overlay {
+.project-card .overlay {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    background: linear-gradient(to top, 
+        rgba(0, 0, 0, 0.95) 0%,
+        rgba(0, 0, 0, 0.7) 50%,
+        transparent 100%);
     color: white;
-    padding: 2rem 1rem 1rem;
-    transform: translateY(100%);
-    transition: transform 0.3s ease;
+    padding: 2rem 1.5rem 1.5rem;
+    transform: translateY(0);
+    transition: transform 0.4s ease;
+}
+.project-card .overlay h3 {
+    color: white;
+    font-size: 1.4rem;
+    margin-bottom: 0.3rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.project-card .overlay p {
+    color: var(--accent-secondary);
+    font-size: 1rem;
+    margin: 0;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.project-card .overlay p::before {
+    content: '📍';
+    font-size: 1rem;
+    opacity: 0.8;
 }
 .project-card:hover .overlay {
-    transform: translateY(0);
+    transform: translateY(5px);
 }
-
+.project-card::before {
+    content: '🔑';
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 2rem;
+    opacity: 0;
+    transform: rotate(-10deg);
+    transition: var(--transition);
+    z-index: 10;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+.project-card:hover::before {
+    opacity: 0.8;
+    transform: rotate(0deg);
+}
 /* Reviews */
 #reviews {
     padding: 4rem 0;
@@ -1647,7 +1694,7 @@ a:hover {
         text-align: center;
     }
     .price-card li span:first-child {
-        font-size: 0.9rem;
+        font-size: 0.79rem;
         font-weight: 500;
         color: var(--text-main);
         padding-right: 0.5rem;
@@ -1667,13 +1714,24 @@ a:hover {
     #projects {
         padding: 3rem 0;
     }
-    .project-grid {
+     .project-grid {
         grid-template-columns: 1fr;
-        gap: 1rem;
-        margin-top: 2rem;
+        gap: 1.5rem;
     }
-    .project-card {
+     .project-card {
         aspect-ratio: 16/9;
+        border-radius: 20px;
+    }
+    .project-card .overlay {
+        padding: 1.5rem 1rem;
+    }
+    
+    .project-card .overlay h3 {
+        font-size: 1.2rem;
+    }
+    
+    .project-card .overlay p {
+        font-size: 0.9rem;
     }
 
     /* Reviews mobile */
@@ -1845,6 +1903,7 @@ a:hover {
         gap: 0.3rem;
     }
     .price-card li span:first-child {
+        font-size: 0.79rem;
         min-width: auto;
         width: 100%;
     }
@@ -1915,6 +1974,7 @@ a:hover {
         gap: 0.3rem;
     }
      .price-card li span:first-child {
+        font-size: 0.79rem;
         width: 100%;
         margin-bottom: 0.2rem;
     }
@@ -1999,7 +2059,7 @@ a:hover {
         padding: 0.6rem 0.4rem;
     }
     .price-card li span:first-child {
-        font-size: 0.85rem;
+        font-size: 0.79rem;
     }
     .price-card .price {
         font-size: 0.8rem;
@@ -2049,7 +2109,29 @@ a:hover {
         background: #15803d;
         transform: scale(0.98);
     }
+     .project-card:hover {
+        transform: none;
+        border-color: transparent;
+    }
+    
+    .project-card:hover img {
+        transform: none;
+    }
+    
+    .project-card:hover .overlay {
+        transform: none;
+    }
+    
+    .project-card::before {
+        display: none;
+    }
 }
-.mobile-call:not(:first-of-type) {
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+.mobile-call + .mobile-call {
     display: none !important;
 }
